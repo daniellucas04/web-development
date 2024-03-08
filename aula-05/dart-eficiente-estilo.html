@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div id="content" class="content">
+  <div id="table-of-contents" role="doc-toc">
+  <h2>Índice</h2>
+  <div id="text-table-of-contents" role="doc-toc">
+  <ul>
+  <li><a href="#orgc5f4382">1. Dart Eficiente: Estilo</a>
+  <ul>
+  <li><a href="#org11ae969">1.1. Identificadores</a></li>
+  <li><a href="#org0a8894c">1.2. Faça: nomes de tipos com UpperCamelCase</a></li>
+  <li><a href="#orgbe4f227">1.3. Faça: nomes de extensões usando UpperCamelCase</a></li>
+  <li><a href="#org2a5d7da">1.4. Faça: nomeie pacotes, diretórios e código fonte usando lowercase_with_underscores.</a></li>
+  <li><a href="#org3e13df9">1.5. Faça: nomes de prefixos de importação usando lowercase_with_underscores</a></li>
+  <li><a href="#org0341307">1.6. Faça: nomes de outros identificadores usando lowerCamelCase</a></li>
+  <li><a href="#org67a7a4b">1.7. PREFIRA: usar lowerCamelCase em nomes de constantes</a>
+  <ul>
+  <li><a href="#org3d6844c">1.7.1. Nota:</a></li>
+  </ul>
+  </li>
+  <li><a href="#org9827668">1.8. FAÇA: Coloque siglas e abreviações em maiúscula com mais de duas letras, como palavras</a></li>
+  <li><a href="#org6f3648f">1.9. PREFIRA: usar <code>_</code>, <code>_ _</code>, etc. para parâmetros de callback não utilizados</a>
+  <ul>
+  <li><a href="#orgc4ce5b6">1.9.1. Nota:</a></li>
+  </ul>
+  </li>
+  <li><a href="#orga3edafe">1.10. NÃO use um sublinhado inicial para identificadores que não sejam privados</a></li>
+  <li><a href="#org37e310f">1.11. NÃO use letras de prefixo</a></li>
+  <li><a href="#org854412e">1.12. NÃO nomeie bibliotecas explicitamente</a></li>
+  <li><a href="#org6fdbfd0">1.13. Ordenando</a></li>
+  <li><a href="#org4b3593b">1.14. FAÇA: coloque importações dart: antes de outras importações</a></li>
+  <li><a href="#orgbc6eb63">1.15. FAÇA: coloque imports package: antes de imports relativos</a></li>
+  <li><a href="#orgf2acacf">1.16. FAÇA: especifique exports em uma seção separada após todos os imports</a></li>
+  <li><a href="#orgc8362d5">1.17. FAÇA: ordene seções alfabeticamente</a></li>
+  <li><a href="#org045a4ec">1.18. Formatação</a></li>
+  <li><a href="#orge8b5f9a">1.19. Formate seu código usando: dart format</a></li>
+  <li><a href="#org1f6e4eb">1.20. CONSIDERE: alterar seu código para torná-lo mais amigável ao formatador</a></li>
+  <li><a href="#org12d3836">1.21. EVITE: linhas mais longas do que 80 caracteres</a></li>
+  <li><a href="#org33129af">1.22. USE: chaves para todas as instruções de controle de fluxo</a></li>
+  </ul>
+  </li>
+  </ul>
+  </div>
+  </div>
+  <div id="outline-container-orgc5f4382" class="outline-2">
+  <h2 id="orgc5f4382"><span class="section-number-2">1.</span> Dart Eficiente: Estilo</h2>
+  <div class="outline-text-2" id="text-1">
+  <p>
+  Uma parte surpreendentemente importante de um bom código é o bom estilo. A nomenclatura, a ordem e a formatação consistentes ajudam o <mark>código igual</mark> a ter a <mark>mesma aparência</mark>. Ele aproveita o poderoso hardware de correspondência de padrões que a maioria de nós possui em nossos sistemas oculares. Se usarmos um estilo consistente em todo o ecossistema <strong>Dart</strong>, será mais fácil para todos nós aprendermos e contribuirmos com o código uns dos outros.
+  </p>
+  </div>
+  
+  <div id="outline-container-org11ae969" class="outline-3">
+  <h3 id="org11ae969"><span class="section-number-3">1.1.</span> Identificadores</h3>
+  <div class="outline-text-3" id="text-1-1">
+  <p>
+  Os identificadores vêm em três sabores no <strong>Dart</strong>.
+  </p>
+  
+  <ul class="org-ul">
+  <li><span style="color:#11796d">UpperCamelCase</span> nomes com a primeira letra de cada palavra em maiúscula, incluindo a primeira.</li>
+  <li><span style="color:#11796d">lowerCamelCase</span> nomes com a primeira letra de cada palavra em maiúscula, <em>exceto</em> a primeira letra.</li>
+  <li><span style="color:#11796d">lowercase_with_underscores</span> nomes que usam somente letras minúsculas, separadas por _.</li>
+  </ul>
+  </div>
+  </div>
+  
+  <div id="outline-container-org0a8894c" class="outline-3">
+  <h3 id="org0a8894c"><span class="section-number-3">1.2.</span> Faça: nomes de tipos com <span style="color:#11796d">UpperCamelCase</span></h3>
+  <div class="outline-text-3" id="text-1-2">
+  <p>
+  Nomes de classes, tipos enum, typedefs e parâmetros de tipos devem ter a primeira letra de cada palavra maiúscula (incluindo a primeira palavra) e não usar separadores.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">class SliderMenu { ... }
+  
+  class HttpRequest { ... }
+  
+  typedef Predicate&lt;T&gt; = bool Function(T value);
+  </pre>
+  </div>
+  
+  <p>
+  Isso inclui até classes destinadas a serem usadas em anotações de metadados.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">class Foo {
+    const Foo([Object? arg]);
+  }
+  
+  @Foo(anArg)
+  class A { ... }
+  
+  @Foo()
+  class B { ... }
+  </pre>
+  </div>
+  
+  <p>
+  Se o construtor da classe de anotação não aceitar parâmetros, talvez você queira criar uma constante <span style="color:#11796d">lowerCamelCase</span> separada para ele.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">const foo = Foo();
+  
+  @foo
+  class C { ... }
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-orgbe4f227" class="outline-3">
+  <h3 id="orgbe4f227"><span class="section-number-3">1.3.</span> Faça: nomes de extensões usando <span style="color:#11796d">UpperCamelCase</span></h3>
+  <div class="outline-text-3" id="text-1-3">
+  <p>
+  Assim como os tipos, as extensões devem colocar a primeira letra de cada palavra em maiúscula (incluindo a primeira palavra) e não usar separadores.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">extension MyFancyList&lt;T&gt; on List&lt;T&gt; { ... }
+  
+  extension SmartIterable&lt;T&gt; on Iterable&lt;T&gt; { ... }
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org2a5d7da" class="outline-3">
+  <h3 id="org2a5d7da"><span class="section-number-3">1.4.</span> Faça: nomeie pacotes, diretórios e código fonte usando <span style="color:#11796d">lowercase_with_underscores</span>.</h3>
+  <div class="outline-text-3" id="text-1-4">
+  <p>
+  Alguns sistemas de arquivos não diferenciam maiúsculas de minúsculas, portanto, muitos projetos exigem que os nomes dos arquivos estejam todos em letras minúsculas. Usar um caractere de separação permite que os nomes ainda possam ser lidos nesse formato. Usar sublinhados como separador garante que o nome ainda seja um identificador <strong>Dart</strong> válido, o que pode ser útil se a linguagem suportar posteriormente importações simbólicas.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-bash"># bom:
+  my_package
+  └─ lib
+     └─ file_system.dart
+     └─ slider_menu.dart
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-bash"># ruim:
+  mypackage
+  └─ lib
+     └─ file-system.dart
+     └─ SliderMenu.dart
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org3e13df9" class="outline-3">
+  <h3 id="org3e13df9"><span class="section-number-3">1.5.</span> Faça: nomes de prefixos de importação usando <span style="color:#11796d">lowercase_with_underscores</span>
+  </h3>
+  <div class="outline-text-3" id="text-1-5">
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  import 'dart:math' as math;
+  import 'package:angular_components/angular_components.dart' as angular_components;
+  import 'package:js/js.dart' as js;
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  import 'dart:math' as Math;
+  import 'package:angular_components/angular_components.dart' as angularComponents;
+  import 'package:js/js.dart' as JS;
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org0341307" class="outline-3">
+  <h3 id="org0341307"><span class="section-number-3">1.6.</span> Faça: nomes de outros identificadores usando <span style="color:#11796d">lowerCamelCase</span></h3>
+  <div class="outline-text-3" id="text-1-6">
+  <p>
+  Membros de classe, definições de nível superior, variáveis, parâmetros e parâmetros nomeados devem ter a primeira letra de cada palavra em maiúscula, <em>exceto</em> a primeira palavra e não usar separadores.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  var count = 3;
+  
+  HttpRequest httpRequest;
+  
+  void align(bool clearItems) {
+    // ...
+  }
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org67a7a4b" class="outline-3">
+  <h3 id="org67a7a4b"><span class="section-number-3">1.7.</span> PREFIRA: usar <span style="color:#11796d">lowerCamelCase</span> em nomes de constantes</h3>
+  <div class="outline-text-3" id="text-1-7">
+  <p>
+  Em código novo, use <span style="color:#11796d">lowerCamelCase</span> para variáveis ​​constantes, incluindo valores enum.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  const pi = 3.14;
+  const defaultTimeout = 1000;
+  final urlScheme = RegExp('^([a-z]+):');
+  
+  class Dice {
+    static final numberGenerator = Random();
+  }
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  const PI = 3.14;
+  const DefaultTimeout = 1000;
+  final URL_SCHEME = RegExp('^([a-z]+):');
+  
+  class Dice {
+    static final NUMBER_GENERATOR = Random();
+  }
+  </pre>
+  </div>
+  
+  <p>
+  Você pode usar <small>SCREAMING_CAPS</small> para consistência com o código existente, como nos seguintes casos:
+  </p>
+  
+  <ul class="org-ul">
+  <li>Ao adicionar código a um arquivo ou biblioteca que já usa o <small>SCREAMING_CAPS</small>.</li>
+  <li>Ao gerar código <strong>Dart</strong> paralelo ao código <del>Java</del>, por exemplo, em tipos enumerados gerados a partir de protobufs.</li>
+  </ul>
+  </div>
+  
+  <div id="outline-container-org3d6844c" class="outline-4">
+  <h4 id="org3d6844c"><span class="section-number-4">1.7.1.</span> Nota:</h4>
+  <blockquote cite="https://flutter.dev" style="background-color: lightsalmon;">
+    <div class="outline-text-4" id="text-1-7-1">
+    <p>
+    Inicialmente usavamos <small>SCREAMING_CAPS</small> no estilo <del>Java</del> para constantes. Mudamos por alguns motivos:
+    </p>
+    
+    <ul class="org-ul">
+    <li><small>SCREAMING_CAPS</small> parece ruim em muitos casos, principalmente valores enum para coisas como cores <abbr title="Cascading Style Sheets ou Folhas de Estilo em Cascata">CSS</abbr>.</li>
+    <li>As constantes são frequentemente alteradas para variáveis ​​finais não const, o que exigiria uma mudança de nome.</li>
+    <li>A values propriedade definida automaticamente em um tipo enum é const e minúscula.</li>
+    </ul>
+    </div>
+  </blockquote>
+  </div>
+  </div>
+  
+  <div id="outline-container-org9827668" class="outline-3">
+  <h3 id="org9827668"><span class="section-number-3">1.8.</span> Faça: Coloque siglas e abreviações em maiúscula com mais de duas letras, como palavras</h3>
+  <div class="outline-text-3" id="text-1-8">
+  <p>
+  Acrônimos em maiúsculas podem ser difíceis de ler e vários acrônimos adjacentes podem levar a nomes ambíguos. Por exemplo, dado um nome que começa com HTTPSFTP, não há como saber se ele está se referindo a <abbr title="Hypertext Transfer Protocol Secure">HTTPS</abbr> <abbr title="File Transfer Protocol">FTP</abbr> ou <abbr title="Hypertext Transfer Protocol">HTTP</abbr> SFTP.
+  </p>
+  
+  <p>
+  Para evitar isso, siglas e abreviaturas são maiúsculas como palavras normais.
+  </p>
+  
+  <p>
+  Exceção: siglas de duas letras como <abbr title="Input and Output">IO</abbr> (entrada/saída) são totalmente maiúsculas: <abbr title="Input and Output">IO</abbr>. Por outro lado, <em>abreviações</em> de duas letras como ID (identificação) são como palavras normais: Id.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  
+  class HttpConnection {}
+  class DBIOPort {}
+  class TVVcr {}
+  class MrRogers {}
+  
+  var httpRequest = ...
+  var uiHandler = ...
+  var userId = ...
+  Id id;
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  
+  class HTTPConnection {}
+  class DbIoPort {}
+  class TvVcr {}
+  class MRRogers {}
+  
+  var hTTPRequest = ...
+  var uIHandler = ...
+  var userID = ...
+  ID iD;
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org6f3648f" class="outline-3">
+  <h3 id="org6f3648f"><span class="section-number-3">1.9.</span> PREFIRA: usar <code>_</code>, <code>_ _</code>, etc. para parâmetros de callback não utilizados</h3>
+  <div class="outline-text-3" id="text-1-9">
+  <p>
+  Às vezes, a assinatura de tipo de uma função <ins>callback</ins> requer um parâmetro, mas a implementação da <ins>callback</ins> não usa o parâmetro. Nesse caso, é idiomático nomear o parâmetro não utilizado <code>_</code>. Se a função tiver vários parâmetros não utilizados, use sublinhados adicionais para evitar colisões de nomes: <code>_</code> <code>_</code>, <code>_</code> <code>_</code> <code>_</code>, etc.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  futureOfVoid.then((_) {
+    print('Operation complete.');
+  });
+  </pre>
+  </div>
+  
+  <p>
+  Esta diretriz é apenas para funções anônimas e locais. Essas funções geralmente são usadas imediatamente em um contexto onde está claro o que o parâmetro não utilizado representa. Por outro lado, funções de nível superior e declarações de métodos não têm esse contexto, portanto seus parâmetros devem ser nomeados para que fique claro para que serve cada parâmetro, mesmo que não seja usado.
+  </p>
+  </div>
+  
+  <div id="outline-container-orgc4ce5b6" class="outline-4">
+  <h4 id="orgc4ce5b6"><span class="section-number-4">1.9.1.</span> Nota:</h4>
+  <div class="outline-text-4" id="text-1-9-1">
+  <blockquote cite="http://gemini.com" style="background-color: lightsalmon;">
+    <!-- <p>
+    De acordo com o gemini:
+    </p> -->
+    
+    <p>
+    No Flutter, uma <ins>callback</ins> é uma função que você passa como argumento para outra função. Essa função passada é então chamada posteriormente pela função que a recebeu, em um momento específico, como por exemplo:
+    </p>
+    
+    <ul class="org-ul">
+    <li>Quando um evento ocorre (ex.: clique de um botão, finalização de uma animação).</li>
+    <li>Quando uma operação assíncrona é concluída (ex.: download de um arquivo, requisição de dados a uma API).</li>
+    </ul>
+    
+    <p>
+    <ins>callbacks</ins> são um mecanismo fundamental para lidar com assincronismo no Flutter, pois permitem que você execute código depois que uma operação termine, ao invés de ficar esperando de forma síncrona.
+    </p>
+    
+    <p>
+    Aqui estão alguns exemplos de uso de <ins>callbacks</ins> no Flutter:
+    </p>
+    
+    <ul class="org-ul">
+    <li>Um widget onPressed <ins>callback</ins> é usado para especificar o código que deve ser executado quando um botão é pressionado.</li>
+    <li>Um widget FutureBuilder utiliza um <ins>callback</ins> para definir o que deve ser renderizado após a conclusão de uma operação assíncrona.</li>
+    </ul>
+    
+    <p>
+    Usar <ins>callbacks</ins> ajuda a manter seu código organizado e evita o uso de técnicas de bloqueio, o que pode prejudicar o desempenho do seu aplicativo.
+    </p>
+    </div>
+  </blockquote>
+  </div>
+  </div>
+  
+  <div id="outline-container-orga3edafe" class="outline-3">
+  <h3 id="orga3edafe"><span class="section-number-3">1.10.</span> NÃO use um sublinhado inicial para identificadores que não sejam privados</h3>
+  <div class="outline-text-3" id="text-1-10">
+  <p>
+  O <strong>Dart</strong> usa um sublinhado inicial em um identificador para marcar membros e declarações de nível superior como privados. Isso treina os usuários para associar um sublinhado inicial a um desses tipos de declaração. Eles veem “_” e pensam “privado”.
+  </p>
+  
+  <p>
+  Não existe conceito de "privado" para variáveis ​​locais, parâmetros, funções locais ou prefixos de biblioteca. Quando um deles tem um nome que começa com sublinhado, envia um sinal confuso ao leitor. Para evitar isso, não use sublinhados iniciais nesses nomes.
+  </p>
+  </div>
+  </div>
+  
+  <div id="outline-container-org37e310f" class="outline-3">
+  <h3 id="org37e310f"><span class="section-number-3">1.11.</span> NÃO use letras de prefixo</h3>
+  <div class="outline-text-3" id="text-1-11">
+  <p>
+  A notação húngara e outros esquemas surgiram na época da <abbr title="Basic Combined Programming Language">BCPL</abbr>, quando o compilador não fazia muito para ajudá-lo a entender seu código. Como o <strong>Dart</strong> pode informar o tipo, o escopo, a mutabilidade e outras propriedades de suas declarações, não há razão para codificar essas propriedades em nomes de identificadores.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  defaultTimeout
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  kDefaultTimeout
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org854412e" class="outline-3">
+  <h3 id="org854412e"><span class="section-number-3">1.12.</span> NÃO nomeie bibliotecas explicitamente</h3>
+  <div class="outline-text-3" id="text-1-12">
+  <p>
+  Acrescentar um nome à library diretiva é tecnicamente possível, mas é um recurso legado e não é recomendado.
+  </p>
+  
+  <p>
+  O <strong>Dart</strong> gera uma tag exclusiva para cada biblioteca com base em seu caminho e nome de arquivo. A nomeação de bibliotecas substitui esse <abbr title="Uniform Resource Identifier">URI</abbr> gerado. Sem o <abbr title="Uniform Resource Identifier">URI</abbr>, pode ser mais difícil para as ferramentas encontrarem o arquivo da biblioteca principal em questão.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  
+  library my_library;
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  
+  /// A really great test library.
+  @TestOn('browser')
+  library;
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org6fdbfd0" class="outline-3">
+  <h3 id="org6fdbfd0"><span class="section-number-3">1.13.</span> Ordenando</h3>
+  <div class="outline-text-3" id="text-1-13">
+  <p>
+  Para manter o preâmbulo do seu arquivo organizado, temos uma ordem prescrita na qual as diretivas devem aparecer. Cada "seção" deve ser separada por uma linha em branco.
+  </p>
+  
+  <p>
+  Uma única regra de linter lida com todas as diretrizes de pedido: directivas_ordering.
+  </p>
+  </div>
+  </div>
+  
+  <div id="outline-container-org4b3593b" class="outline-3">
+  <h3 id="org4b3593b"><span class="section-number-3">1.14.</span> FAÇA: coloque importações dart: antes de outras importações</h3>
+  <div class="outline-text-3" id="text-1-14">
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  
+  import 'dart:async';
+  import 'dart:html';
+  
+  import 'package:bar/bar.dart';
+  import 'package:foo/foo.dart';
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-orgbc6eb63" class="outline-3">
+  <h3 id="orgbc6eb63"><span class="section-number-3">1.15.</span> FAÇA: coloque imports package: antes de imports relativos</h3>
+  <div class="outline-text-3" id="text-1-15">
+  <div class="org-src-container">
+  <pre class="src src-dart">import 'package:bar/bar.dart';
+  import 'package:foo/foo.dart';
+  
+  import 'util.dart';
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-orgf2acacf" class="outline-3">
+  <h3 id="orgf2acacf"><span class="section-number-3">1.16.</span> FAÇA: especifique exports em uma seção separada após todos os imports</h3>
+  <div class="outline-text-3" id="text-1-16">
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  
+  import 'src/error.dart';
+  import 'src/foo_bar.dart';
+  
+  export 'src/error.dart';
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  
+  import 'src/error.dart';
+  export 'src/error.dart';
+  import 'src/foo_bar.dart';
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-orgc8362d5" class="outline-3">
+  <h3 id="orgc8362d5"><span class="section-number-3">1.17.</span> FAÇA: ordene seções alfabeticamente</h3>
+  <div class="outline-text-3" id="text-1-17">
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  
+  import 'package:bar/bar.dart';
+  import 'package:foo/foo.dart';
+  
+  import 'foo.dart';
+  import 'foo/foo.dart';
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  
+  import 'package:foo/foo.dart';
+  import 'package:bar/bar.dart';
+  
+  import 'foo/foo.dart';
+  import 'foo.dart';
+  </pre>
+  </div>
+  </div>
+  </div>
+  
+  <div id="outline-container-org045a4ec" class="outline-3">
+  <h3 id="org045a4ec"><span class="section-number-3">1.18.</span> Formatação</h3>
+  <div class="outline-text-3" id="text-1-18">
+  <p>
+  Como muitas linguagens, o <strong>Dart</strong> ignora os espaços em branco. No entanto, os <em>humanos</em> não. Ter um estilo de espaço em branco consistente ajuda a garantir que os leitores <em>humanos</em> vejam o código da mesma forma que o compilador.
+  </p>
+  </div>
+  </div>
+  
+  <div id="outline-container-orge8b5f9a" class="outline-3">
+  <h3 id="orge8b5f9a"><span class="section-number-3">1.19.</span> Formate seu código usando: dart format</h3>
+  <div class="outline-text-3" id="text-1-19">
+  <p>
+  A formatação é um trabalho tedioso e particularmente demorado durante a refatoração. Felizmente, você não precisa se preocupar com isso. Fornecemos um sofisticado formatador de código automatizado chamado <strong>dart</strong> format que faz isso por você. Temos alguma documentação sobre as regras que ela aplica, mas as regras oficiais de tratamento de espaços em branco para o <strong>Dart</strong> são aquelas que <strong>dart</strong> format produzem.
+  </p>
+  
+  <p>
+  O restante dos guias de formatação são para as poucas coisas que <strong>dart</strong> format não consegue corrigir por você.
+  </p>
+  </div>
+  </div>
+  
+  <div id="outline-container-org1f6e4eb" class="outline-3">
+  <h3 id="org1f6e4eb"><span class="section-number-3">1.20.</span> CONSIDERE: alterar seu código para torná-lo mais amigável ao formatador</h3>
+  <div class="outline-text-3" id="text-1-20">
+  <p>
+  O formatador faz o melhor que pode com qualquer código que você usa, mas não pode fazer milagres. Se o seu código tiver identificadores particularmente longos, expressões profundamente aninhadas, uma mistura de diferentes tipos de operadores, etc., a saída formatada ainda poderá ser difícil de ler.
+  </p>
+  
+  <p>
+  Quando isso acontecer, reorganize ou simplifique seu código. Considere encurtar o nome de uma variável local ou transformar uma expressão em uma nova variável local. Em outras palavras, faça os mesmos tipos de modificações que você faria se estivesse formatando o código manualmente e tentando torná-lo mais legível. Pense no <strong>dart</strong> format como uma parceria onde vocês trabalham juntos, às vezes de forma iterativa, para produzir um código bonito.
+  </p>
+  </div>
+  </div>
+  
+  <div id="outline-container-org12d3836" class="outline-3">
+  <h3 id="org12d3836"><span class="section-number-3">1.21.</span> EVITE: linhas mais longas do que 80 caracteres</h3>
+  <div class="outline-text-3" id="text-1-21">
+  <p>
+  Estudos de legibilidade mostram que longas linhas de texto são mais difíceis de ler porque seu olho precisa se deslocar mais longe ao passar para o início da linha seguinte. É por isso que jornais e revistas usam múltiplas colunas de texto.
+  </p>
+  
+  <p>
+  Se você realmente deseja linhas com mais de 80 caracteres, nossa experiência é que seu código provavelmente é muito detalhado e pode ser um pouco mais compacto. O principal bandido geralmente é NomeDeClassesMuitoLongs. Pergunte a si mesmo: "Cada palavra nesse nome de tipo me diz algo crítico ou evita uma colisão de nomes?" Caso contrário, considere omiti-lo.
+  </p>
+  
+  <p>
+  Observe que o <strong>dart</strong> format faz 99% do trabalho para você, mas o último 1% é você. Ele não divide literais de strings longas para caber em 80 colunas, então você precisa fazer isso manualmente.
+  </p>
+  
+  <p>
+  Exceção: quando um URI ou caminho de arquivo ocorre em um comentário ou string (geralmente em uma importação ou exportação), ele pode permanecer inteiro mesmo que faça com que a linha ultrapasse 80 caracteres. Isso torna mais fácil pesquisar um caminho nos arquivos de origem.
+  </p>
+  
+  <p>
+  Exceção: strings multilinhas podem conter linhas com mais de 80 caracteres porque as novas linhas são significativas dentro da string e dividir as linhas em linhas mais curtas pode alterar o programa.
+  </p>
+  </div>
+  </div>
+  
+  <div id="outline-container-org33129af" class="outline-3">
+  <h3 id="org33129af"><span class="section-number-3">1.22.</span> USE: chaves para todas as instruções de controle de fluxo</h3>
+  <div class="outline-text-3" id="text-1-22">
+  <p>
+  Fazendo assim você evita o problema do else pendente.
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">if (ehDiaSemana) {
+    print('Bicicleta para o trabalho!');
+  } else {
+    print('Vá dançar ou leia um livro!');
+  }
+  </pre>
+  </div>
+  
+  <p>
+  Exceção: quando você tem uma instrução if sem cláusula else e toda a instrução if cabe em uma linha, você pode omitir os colchetes se preferir:
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  
+  if (arg == null) return defaultValue;
+  </pre>
+  </div>
+  
+  <p>
+  Porém, se o corpo passar para a próxima linha, use colchetes:
+  </p>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// bom:
+  
+  if (overflowChars != other.overflowChars) {
+    return overflowChars &lt; other.overflowChars;
+  }
+  </pre>
+  </div>
+  
+  <div class="org-src-container">
+  <pre class="src src-dart">// ruim:
+  
+  if (overflowChars != other.overflowChars)
+    return overflowChars &lt; other.overflowChars;
+  </pre>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <a href="#orgc5f4382">Voltar para <strong>Dart</strong> Eficiente: Estilo</a>
+</body>
+</html>
