@@ -7,12 +7,15 @@
     <style>
         .esquerda {
             float: left;
+            padding-right: 10px;
         }
         .direita {
             float: right;
+            padding-left: 10px;
         }
         p {
             width: 500px;
+            text-align: justify;
         }
     </style>
 </head>
@@ -36,11 +39,11 @@
 <p>By default, containers return false for all hit tests. If the color property is specified, the hit testing is handled by ColoredBox, which always returns true. If the decoration or foregroundDecoration properties are specified, hit testing is handled by Decoration.hitTest.</p>
 
 <h2>Padding</h2>
-<p><img src="fig6_padding.png" alt="Padding">A widget that insets its child by the given padding.</p>
+<p><img class="direita" src="fig6_padding.png" alt="Padding">A widget that insets its child by the given padding.</p>
 <p>When passing layout constraints to its child, padding shrinks the constraints by the given padding, causing the child to layout at a smaller size. Padding then sizes itself to its child's size, inflated by the padding, effectively creating empty space around the child.</p>
 
 <h2>SizedBox</h2>
-<p><img src="fig6_sizedbox.png" alt="SizedBox">A box with a specified size.</p>
+<p><img class="esquerda" src="fig6_sizedbox.png" alt="SizedBox">A box with a specified size.</p>
 
 <p>If given a child, this widget forces it to have a specific width and/or height. These values will be ignored if this widget's parent does not permit them. For example, this happens if the parent is the screen (forces the child to be the same size as the parent), or another SizedBox (forces its child to have a specific width and/or height). This can be remedied by wrapping the child SizedBox in a widget that does permit it to be any size up to the size of the parent, such as Center or Align.</p>
 
