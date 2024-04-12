@@ -20,16 +20,26 @@
     font-size: 2rem;
 }
 
+.menu > span:hover {
+    color: #727272;
+}
+
 .navigation,
 .navigation > ul {
     display: flex;
     gap: 2rem;
 }
 
+
 .navigation > ul > li {
     text-transform: uppercase;
     list-style-type: none;
     font-weight: 450;
+    cursor: pointer;
+}
+
+.navigation > ul > li:hover {
+    color: #727272;
 }
 
 .actions > a {
@@ -37,18 +47,21 @@
     padding-left: 1.5rem;
 }
 
+.actions > a:hover {
+    color: #727272;
+}
+
 main {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: start;
+    margin-top: 8rem;
     gap: 8rem;
 }
 
 .left-side {
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    padding-left: 1rem;
     display: flex;
+    margin-left: 2rem;
 }
 
 .product-images {
@@ -60,7 +73,7 @@ main {
 .product-images > span {
     text-align: center;
     font-size: 2rem;
-    margin-top: -1.6rem;
+    cursor: pointer;
 }
 
 .center {
@@ -96,6 +109,11 @@ main {
 .product-title > span {
     font-size: 2rem;
     color: rgb(255, 65, 65);
+    cursor: pointer;
+}
+
+.product-title > span:hover {
+    color: rgb(255, 255, 255);
 }
 
 .price {
@@ -123,10 +141,18 @@ main {
 .size-info > section > span {
     font-size: 1.2rem;
     margin-right: 1rem;
+    cursor: pointer;
+}
+
+.size-info > section > span:hover {
+    color: #727272;
 }
 
 span.active {
     text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+    font-weight: 500;
 }
 
 .quantity-info {
@@ -141,20 +167,23 @@ span.active {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .quantity-info > section > span {
-    border: 1px solid rgb(65, 63, 63);
-    padding: 1.9px 9px;
+    height: 25px;
     border-radius: 100%;
-    display: flex;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
     transition: 150ms all ease-in-out;
 }
 
 .quantity-info > section > span:hover {
     cursor: pointer;
-    background-color: rgb(61, 61, 61);
-    color: white;
+    color: rgb(122, 122, 122);
 }
 
 .add-to-bag {
@@ -174,11 +203,54 @@ span.active {
     justify-content: center;
 
     border-radius: 100%;
-    width: 8rem;
-    height: 8rem;
+    width: 7rem;
+    height: 7rem;
 }
 
 .add-to-bag > span:hover {
     cursor: pointer;
     background-color: rgb(190, 0, 0);
+}
+
+.product-description {
+    position: absolute;
+    right: 25rem;
+    padding-top: 29.5vh;
+    margin-left: -10rem;
+}
+
+.product-description > h6 {
+    font-size: 1rem;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
+}
+
+.description-actions {
+    margin-top: 10vh;
+}
+
+.description-actions > div {
+    font-weight: 500;
+    text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 4rem;
+    cursor: pointer;
+}
+
+.description-actions > div:hover {
+    color: #727272;
+}
+
+.support {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
+
+    margin-top: 1rem;
 }
