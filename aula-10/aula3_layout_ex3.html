@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+    <style>
+        #completa {
+            display: flex;
+        }
+        #esquerda {
+            background-color: lightsalmon;
+            flex: 1;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #direita {
+            background-color: lightgreen;
+            flex: 1;
+        }
+        #e_cima {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            color: #5d5d5d;
+            flex: 2;
+        }
+        #e_baixo {
+            background-color: green;
+            flex: 8;
+        }
+        #ham {
+            flex: 25;
+        }
+        #menu {
+            display: flex;
+            justify-content: space-evenly;
+            flex: 55;
+        }
+        #icones {
+            display: flex;
+            justify-content: space-around;
+            flex: 20;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <!-- Ajuste display de #e_cima para flex.
+    Ajuste flex de #ham para 25.
+    Ajuste flex de #menu para 55.
+    Ajuste flex de #icones para 20.
+    Altere o conteúdo de #ham para um ícone drag_handle de fonts.google.com.
+    Altere o conteúdo de #icones para um ícone favorite, um shopping_bag e um search de fonts.google.com.
+    Ajuste align-items de #e_cima para center.
+    Ajuste display de #menu para flex.
+    Ajuste justify-content de #menu para space-evenly.
+    Ajuste display de #icones para flex.
+    Ajuste justify-content de #icones para space-around.
+    Ajuste background-color de #e_cima para white.
+    Ajuste color de #e_cima para #5d5d5d. -->
+    <div id="completa">
+        <div id="esquerda">
+            <div id="e_cima">
+                <div id="ham">
+                    <span class="material-symbols-outlined">
+                        drag_handle
+                        </span>
+                </div>
+                <div id="menu"> 
+                    ( NEW ARRIVALS
+                    WOMEN
+                    MEN
+                    COLLECTIONS )
+                </div>
+                <div id="icones">
+                    <span class="material-symbols-outlined">
+                        favorite
+                    </span>
+                    <span class="material-symbols-outlined">
+                        shopping_bag
+                    </span>
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                </div>
+            </div>
+            <div id="e_baixo"></div>
+        </div>
+        <div id="direita"></div>
+    </div>
+</body>
+</html>
