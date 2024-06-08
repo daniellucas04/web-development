@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <style>
+        p { font-size: larger; }
+    </style>
+</head>
+<body>
+    <p id="result">2024</p>
+    <button id="prevYear" onclick="prevYear()">Anterior</button>
+    <button id="nextYear" onclick="nextYear()">Próximo</button>
+
+    <script>
+        function nextYear() {
+            document.getElementById('result').innerHTML = Number(document.getElementById('result').textContent) + 1;
+        }
+
+        function prevYear() {
+            document.getElementById('result').innerHTML = Number(document.getElementById('result').textContent) - 1;
+        }
+    </script>
+</body>
+</html>
