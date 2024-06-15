@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanduiche</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .prices {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .prices > small {
+            margin-top: -1rem;
+        }
+
+        .checked {
+            width: max-content;
+            color: white;
+            font-weight: bold;
+            background-color: lightgreen;
+            padding: 5px 20px 5px 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>O valor do sanduíche é: R$ 6,30</h1>
+    <div>
+        <label for="quantity">Quantidade de Sanduiches:</label>
+        <input type="number" id="quantity" value="1" min="1">
+    </div>
+
+    <p>Adicionais:</p>
+    <section>
+        <div id="eggSection">
+            <input type="checkbox" id="egg">
+            <label for="egg">Ovo</label>
+        </div>
+        <div id="baconSection">
+            <input type="checkbox" id="bacon">
+            <label for="bacon">Bacon</label>
+        </div>
+    </section>
+    <div class="prices">
+        <p id="total"></p>
+        <small id="subtotal"></small>
+    </div>
+    <script>
+        const totalField = document.getElementById('total');
+        const subTotalField = document.getElementById('subtotal');
+        const eggField = document.getElementById('egg');
+        const baconField = document.getElementById('bacon');
+        const quantityField = document.getElementById('quantity');
+        const eggSection = document.getElementById('eggSection');
+        const baconSection = document.getElementById('baconSection');
+
+        let totalValue = 6.3, eggValue = 0.9, baconValue = 1.7, totalValueBR, subTotal = 0;
+
+        function moneyBR(value) {
+            return String(value.toFixed(2)).replace('.', ',');
+        }
+
+        eggField.addEventListener('change', () => {
+            if(eggField.checked) {
+                totalValue += eggValue;
+                subTotal += eggValue;
+                eggSection.classList.add('checked');
+            } else {
+                totalValue -= eggValue;
+                subTotal -= eggValue;
+                eggSection.classList.remove('checked');
+            }
+
+            totalField.innerHTML = `Total: <strong>R$ ${moneyBR(totalValue * quantityField.value)}</strong>`;
+            subTotalField.innerHTML = `subtotal: ${moneyBR(subTotal)}`;
+        });
+
+        baconField.addEventListener('change', () => {
+            if(baconField.checked) {
+                totalValue += baconValue;
+                subTotal += baconValue;
+                baconSection.classList.add('checked');
+            } else {
+                totalValue -= baconValue;
+                subTotal -= baconValue;
+                baconSection.classList.remove('checked');
+            }
+            
+            totalField.innerHTML = `Total: <strong>R$ ${moneyBR(totalValue * quantityField.value)}</strong>`;
+            subTotalField.innerHTML = `subtotal: ${moneyBR(subTotal)}`;
+        });
+
+        quantityField.addEventListener('change', () => {
+            if(quantityField.value < 1) quantityField.value = 1;
+
+            totalField.innerHTML = `Total: <strong>R$ ${moneyBR(totalValue * quantityField.value)}</strong>`;
+        });
+
+        window.onload = () => {
+            totalField.innerHTML = `Total: <strong>R$ ${moneyBR(totalValue * quantityField.value)}</strong>`;
+            subTotalField.innerHTML = `subtotal: ${moneyBR(subTotal)}`;
+        }
+    </script>
+</body>
+</html>
