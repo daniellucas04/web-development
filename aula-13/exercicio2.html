@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <script>
+        function imc() {
+            let peso = document.getElementById('peso').value;
+            let altura = document.getElementById('altura').value;
+            peso = Number(peso.replace(',', '.'));
+            altura = Number(altura.replace(',', '.'));
+
+            let imc = peso / (altura * altura)
+            let saida = document.getElementById('saida');
+            saida.innerHTML = `IMC: ${String(imc.toFixed(2)).replace('.', ',')}`;
+        }
+
+        window.onload = function () {
+            var botao = document.getElementById('botao');
+            botao.addEventListener('click', imc);
+        }
+    </script>
+</head>
+<body>
+    <label for="peso">Peso:</label>
+    <input type="text" id="peso"><br>
+    <label for="altura">Altura:</label>
+    <input type="text" id="altura"><br>
+    <input type="button" value="Calcular" id="botao"><br>
+    <p id="saida">Resultado</p>
+</body>
+</html>

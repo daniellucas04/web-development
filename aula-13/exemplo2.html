@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma</title>
+    <script>
+        var correto = 7;
+
+        function verificar() {
+            var campoNumero = document.getElementById('numero');
+            var digitado = campoNumero.value;
+            var numero = parseInt(digitado);
+
+            if(numero == correto) {
+                var campoSaida = document.getElementById('saida');
+                campoSaida.innerHTML = 'Acertou!';
+            }
+        }
+
+        window.onload = function () {
+            var botao = document.getElementById('botao');
+            botao.addEventListener('click', verificar);
+        }
+    </script>
+</head>
+<body>
+    <label for="numero">Número:</label>
+    <input type="number" id="numero"><br>
+    <input type="button" value="Verificar" id="botao"><br>
+    <p id="saida">Resultado</p>
+</body>
+</html>
