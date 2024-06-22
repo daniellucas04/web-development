@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function calcular() {
+            let tabela = document.getElementById('tabela');
+            let kmRodado = Number(document.getElementById('km').value);
+            let combustivel = Number(document.getElementById('combustivel').value);
+            let kmPorLitro = kmRodado/combustivel;
+
+            let item = '';
+            item += '<tr>';
+            item += `<td>${kmRodado}</td>`;
+            item += `<td>${combustivel}</td>`;
+            item += `<td>${kmPorLitro}</td>`;
+            item += '</tr>';
+
+            tabela.innerHTML += item;
+        }
+
+        window.onload = function() {
+            let botao = document.getElementById('botao');
+            botao.addEventListener('click', calcular);
+        }
+    </script>
+    <title>Kms</title>
+</head>
+<body>
+    <label for="km">Kms rodados: </label>
+    <input type="text" id="km"><br><br>
+    <label for="combustivel">Litros de combustivel: </label>
+    <input type="text" id="combustivel"><br><br>
+    <button id="botao">Calcular</button>
+
+    <table id="tabela" border="1" style="margin-top: 20px;">
+        <thead>
+            <tr>
+                <td>Km</td>
+                <td>Litro</td>
+                <td>Km/Litro</td>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

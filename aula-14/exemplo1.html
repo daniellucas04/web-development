@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repetição</title>
+    <script>
+    function dezP() {
+        var campoSaida = document.getElementById('saida');
+        var contador = 1;
+
+        while (contador <= 10) {
+            // campoSaida.innerHTML += "<p>" + contador + "</p>";
+            campoSaida.innerHTML += `<p>${contador}</p>`;
+            contador = contador + 1; // 0 1 2 3 fim...
+        }
+    }
+    window.onload = dezP;
+    </script>
+</head>
+<body>
+    <div id="saida"></div>
+</body>
+</html>

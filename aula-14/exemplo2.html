@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repetindo repetições</title>
+    <script>
+        function preencher() {
+            var linha = 1;
+            var coluna = 1;
+            var campoTabela = document.getElementById('tabela');
+
+            var item = '';
+
+            while(linha <= 3) {
+                item += '<tr>';
+                coluna = 1;
+                while(coluna < 6) {
+                    item += '<td>' + coluna + '</td>';
+                    coluna++;
+                }
+                item += '</tr>';
+                linha++;
+            }
+
+            campoTabela.innerHTML = item;
+        }
+        window.onload = preencher;
+    </script>
+</head>
+<body>
+    <table border="1" id="tabela">
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variáveis globais</title>
+    <script>
+        var numero = 1;
+        function mostrarNumero() {
+            var campoResultado = document.getElementById('resultado');
+            campoResultado.innerHTML = numero;
+        }
+        function aumentar() {
+            numero++;
+            mostrarNumero();
+        }
+        function diminuir() {
+            numero--;
+            mostrarNumero();
+        }
+        window.onload = function() {
+            var botaoMais = document.getElementById('mais');
+            botaoMais.addEventListener('click', aumentar);
+            var botaoMenos = document.getElementById('menos');
+            botaoMenos.addEventListener('click', diminuir);
+        }
+    </script>
+</head>
+<body>
+    <p id="resultado">1</p>
+    <input type="button" value="Menos" id="menos">
+    <input type="button" value="Mais" id="mais">
+</body>
+</html>
