@@ -36,7 +36,7 @@
     "update.mode": "start",
     "terminal.integrated.gpuAcceleration": "off",
     "terminal.integrated.defaultProfile.osx": "fish",
-    "workbench.colorTheme": "Palenight Italic",
+    "workbench.colorTheme": "Indie Dev",
     "workbench.editor.empty.hint": "hidden",
     "window.menuBarVisibility": "toggle",
     "workbench.activityBar.location": "hidden",
