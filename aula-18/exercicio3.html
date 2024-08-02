@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.onload = function() {
+            document.getElementById('cep').addEventListener('change', changeAction);
+        }
+
+        function changeAction() {
+            let form = document.getElementById('form');
+            let cep = String(document.getElementById('cep').value).replace('-', '').replace('.', '');
+
+            if(cep.length < 8) {
+                document.getElementById('error').innerHTML = 'CEP inválido.';
+                document.getElementById('enviar').disabled = true;
+            } else {
+                document.getElementById('error').innerHTML = '';
+                document.getElementById('enviar').disabled = false;
+            }
+
+            form.action = `https://viacep.com.br/ws/${cep}/json/`;
+        }
+    </script>
+    <title>Forms</title>
+</head>
+<body>
+    <div id="error"></div>
+    <form id="form" action="https://viacep.com.br/ws/14784186/json/">
+        <label for="cep">CEP</label>
+        <input type="text" id="cep"> <br><br>
+
+        <button id="enviar">Enviar</button>
+    </form>
+</body>
+</html>

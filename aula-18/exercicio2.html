@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.onload = function() {
+            document.getElementById('enviar').addEventListener('click', criarObjeto);
+        }
+
+        function criarObjeto() {
+            let aluno = { nome: null, prontuario: null, idade: null }
+
+            aluno.nome = document.getElementById('nome').value;
+            aluno.prontuario = document.getElementById('prontuario').value;
+            aluno.idade = document.getElementById('idade').value;
+
+            console.log(aluno);
+        }
+    </script>
+    <title>Forms</title>
+</head>
+<body>
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome"> <br><br>
+
+    <label for="prontuario">Prontuário</label>
+    <input type="text" name="prontuario" id="prontuario"> <br><br>
+
+    <label for="idade">Idade</label>
+    <input type="text" name="idade" id="idade"> <br><br>
+
+    <button id="enviar">Enviar</button>
+</body>
+</html>
